@@ -49,7 +49,7 @@ export default function ModeSection() {
     };
 
     return (
-        <section className="flex items-center justify-center flex-wrap gap-4">
+        <section className="flex items-center justify-center flex-wrap gap-4 w-full">
             {modes.map((mode) => (
                 <button
                     onClick={() => handleThemeChange(mode)}

@@ -5,19 +5,28 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-export const handleError = async (response: Response): Promise<void> => {
-    const errorMessage =
-        (await response.json().catch(() => null))?.message ||
-        `HTTP error! Status: ${response.status}`;
-    throw new Error(errorMessage);
-};
+export function getCurrentDate() {
+    const currentDate = new Date();
+    const options: Intl.DateTimeFormatOptions = { month: 'long' };
+    const monthName = currentDate.toLocaleString('en-US', options);
+    const date = new Date().getDate() + ', ' + monthName;
+    return date;
+}
 
-export const formatDate = (dateString: string | null | undefined): string => {
-    if (!dateString) return 'N/A';
+export function getCelsiusTemp(temp: number) {
+    return Math.round(temp - 273.15);
+}
+
+export function getDayOfWeek(dateString: string): string {
     const date = new Date(dateString);
-    return date.toLocaleDateString('uk-UA', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-    });
-};
+    const daysOfWeek = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+    ];
+    return daysOfWeek[date.getDay()];
+}
