@@ -1,8 +1,10 @@
 import { Box, CircularProgress, Typography } from '@mui/material';
-import { getCelsiusTemp, getCurrentDate, getDayOfWeek } from '@/utils';
+import { getCelsiusTemp, getCurrentDate } from '@/utils';
 import { ForecastData, WeatherData } from '@/types';
 import Image from 'next/image';
 import { getTileColor, getWeatherIcon } from '@/constants';
+import DesktopWidgetData from './DesktopWidgetData';
+import MobileWidgetData from './MobileWidgetData';
 
 export default function WeatherWidget({
     forecastData,
@@ -121,36 +123,8 @@ export default function WeatherWidget({
 
             {forecastData && (
                 <Box mt="auto" width="100%">
-                    <div className="grid grid-cols-2 py-2 lg:grid-cols-5 gap-4">
-                        {Array.from(
-                            new Map(
-                                forecastData.list.map((entry) => [
-                                    entry?.dt_txt.split(' ')[0],
-                                    entry,
-                                ]),
-                            ).values(),
-                        )
-                            .slice(1, 6)
-                            .map((day, index) => {
-                                const weather = day?.weather[0];
-                                return (
-                                    <div className="flex items-center flex-col" key={index}>
-                                        <Image
-                                            src={weather ? getWeatherIcon(weather.main) : ''}
-                                            alt={weather ? weather.description : ''}
-                                            width={24}
-                                            height={24}
-                                        />
-                                        <Typography variant="body2" mt={1}>
-                                            {day && getCelsiusTemp(day.main.temp)}&deg;C
-                                        </Typography>
-                                        <Typography variant="body1">
-                                            {day && getDayOfWeek(day.dt_txt)}
-                                        </Typography>
-                                    </div>
-                                );
-                            })}
-                    </div>
+                    <DesktopWidgetData forecastData={forecastData} />
+                    <MobileWidgetData forecastData={forecastData} />
                 </Box>
             )}
         </Box>

@@ -85,7 +85,7 @@ export default function ForecastSection() {
     return (
         <section className="w-full flex flex-col justify-center items-center gap-4 max-w-[1200px] mx-auto">
             <SearchCityForm onSearch={handleCitySearch} />
-            <div className="grid grid-cols-4 gap-4 w-full auto-rows-min">
+            <div className="grid grid-cols-4 gap-2 lg:gap-4 w-full auto-rows-min">
                 {/* Small Widget (2x2) */}
                 <div className="col-span-1 row-span-2 bg-gray-400 flex justify-center rounded-md min-h-[310px]">
                     <WeatherWidget

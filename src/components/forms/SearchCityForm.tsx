@@ -6,7 +6,7 @@ export default function SearchCityForm({ onSearch }: { onSearch: (city: string) 
 
     return (
         <form
-            className="w-full flex items-center gap-4"
+            className="w-full flex items-center gap-4 max-lg:flex-col"
             onSubmit={(e) => {
                 e.preventDefault();
                 if (city.trim()) onSearch(city);
@@ -21,7 +21,10 @@ export default function SearchCityForm({ onSearch }: { onSearch: (city: string) 
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
             />
-            <button className="bg-indigo text-white px-4 py-1 rounded-lg" type="submit">
+            <button
+                className="bg-indigo text-white px-4 py-1 rounded-lg max-lg:w-full"
+                type="submit"
+            >
                 Search
             </button>
         </form>
