@@ -41,7 +41,7 @@ export default function ForecastSection() {
     const lastCoordinates = useRef<{ latitude: number; longitude: number } | null>(null);
 
     const displayWeatherData = cityWeatherData || weatherData;
-    const displayForecastData = coordinatesForecastData || forecastData;
+    const displayForecastData = forecastData || coordinatesForecastData;
 
     const fetchWeather = useCallback(
         (latitude: number, longitude: number) => {
