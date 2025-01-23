@@ -5,7 +5,6 @@ import { Typography } from "@mui/material";
 import Image from "next/image";
 
 export default function DesktopWidgetData({ forecastData }: { forecastData: ForecastData }) {
-  console.log("DesktopWidgetData  forecastData:", forecastData)
   return (
       <div className="grid-cols-2 py-2 lg:grid-cols-5 gap-4 lg:grid hidden">
           {Array.from(
